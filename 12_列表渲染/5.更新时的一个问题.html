@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 遍历数组 -->
+        <h2>人员列表</h2>
+        <button @click="updateMei">更新马冬梅的信息</button>
+        <ul>
+            <li v-for="(person,index) in personList" :key="person.id">
+                {{person.name}} - {{person.age}}
+            </li>
+        </ul>
+
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false //阻止 vue在启动时生成生产提示
+
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                personList: [{
+                        id: '001',
+                        name: '马冬梅',
+                        age: '18',
+                        gender: '女'
+                    },
+                    {
+                        id: '002',
+                        name: '周冬雨',
+                        age: '22',
+                        gender: '女'
+                    },
+                    {
+                        id: '003',
+                        name: '周杰伦',
+                        age: '21',
+                        gender: '男'
+                    },
+                    {
+                        id: '004',
+                        name: '温兆伦',
+                        age: '17',
+                        gender: '男'
+                    }
+                ],
+            },
+            methods: {
+                updateMei(){
+                    /* this.personList[0].name = '马老师' //奏效
+                    this.personList[0].age = '50' //奏效
+                    this.personList[0].gender = '男' //奏效 */
+                    // this.personList[0] = {id:'001',name:'马老师',gender:'男'} // 未奏效
+                    this.personList.splice(0,1,{id:'001',name:'马老师',age:33,gender:'男'})
+                }
+            },
+        });
+
+    </script>
+</body>
+
+</html>
