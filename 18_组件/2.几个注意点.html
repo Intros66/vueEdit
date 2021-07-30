@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+ 
+    <div id="app">
+       <h1>{{msg}}</h1>
+       <school></school>
+    </div>
+
+   
+    <script type="text/javascript">
+        Vue.config.productionTip = false //阻止 vue在启动时生成生产提示
+        
+        //简写
+       /*  const s = {
+            name: 'at',
+            template: `
+                <div>
+                    <h2>学校名称：{{name}}</h2>
+                    <h2>学校地址：{{address}}</h2>    
+                </div>
+            `,
+            data(){
+                return {
+                    name: '尚',
+                    address: '北京'
+                }
+            }
+        } */
+        const s = Vue.extend({
+            name: 'at',
+            template: `
+                <div>
+                    <h2>学校名称：{{name}}</h2>
+                    <h2>学校地址：{{address}}</h2>    
+                </div>
+            `,
+            data(){
+                return {
+                    name: '尚',
+                    address: '北京'
+                }
+            }
+        })
+
+
+        //创建vm
+        new Vue({
+            el: '#app',
+            data:{
+                msg: '欢迎'
+            },
+            components:{
+                school:s
+            },
+            methods: {}
+        });
+
+       
+    </script>
+</body>
+
+</html>
